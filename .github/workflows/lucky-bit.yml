@@ -1,6 +1,12 @@
 name: LuckyBit
 
 on:
+  workflow_dispatch:
+    inputs:
+      user:
+        description: "Trigger User"
+        required: false
+        default: me
   schedule:
     # Run 5th Minute of Every Hour
     - cron:  '5 * * * *'
@@ -19,5 +25,7 @@ jobs:
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Check Luck
+      env: 
+        USER: ${{ inputs.user }}
       run: |
         python LuckyBit.py
