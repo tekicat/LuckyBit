@@ -27,5 +27,7 @@ jobs:
     - name: Check Luck
       env: 
         USER: ${{ inputs.user }}
+        TG_TOKEN: ${{ secrets.TG_TOKEN }}
+        CHAT_ID: ${{ secrets.CHAT_ID }}
       run: |
         python LuckyBit.py
